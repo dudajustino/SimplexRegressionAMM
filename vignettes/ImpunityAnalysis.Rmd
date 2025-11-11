@@ -14,13 +14,15 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Introduction
+## Introduction
 
-This vignette demonstrates the use of the `SimplexRegression` package to model impunity data across countries. We explore the advantages of parametric link functions (plogit1 and plogit2) compared to traditional fixed link functions, and provide comprehensive model diagnostics.
+This vignette demonstrates the use of the `SimplexRegression` package to model impunity data across countries. 
+We explore the advantages of parametric link functions (plogit1 and plogit2) compared to traditional fixed link functions, 
+and provide comprehensive model diagnostics.
 
 The impunity dataset contains information about various socioeconomic and political indicators across countries, with the response variable measuring levels of impunity (a bounded variable in the interval (0,1)).
 
-# Loading the Data
+## Loading the Data
 ```{r setup}
 library(SimplexRegression)
 data("impunity_dataset")
@@ -72,6 +74,7 @@ cat("Max:      ", round(max(dados$Impunity), 4), "\n")
 cat("Skewness: ", round(moments::skewness(dados$Impunity), 4), "\n")
 cat("Kurtosis: ", round(moments::kurtosis(dados$Impunity), 4), "\n")
 ```
+
 # Parametric Link Function Models
 
 One of the key features of simplex regression is the ability to use parametric link functions that adapt to the data structure. We begin by fitting models with `plogit1` and `plogit2` link functions.
@@ -79,7 +82,7 @@ One of the key features of simplex regression is the ability to use parametric l
 We estimated simplex regression models with parametric mean link functions `plogit1` and `plogit2`, including all eight covariates, selected powers, and interaction terms.  
 Predictor selection was guided by half-normal residual plots with simulated envelopes, pseudo-R², and penalized information criteria (AIC, SIC, HQIC).
 
-### Model 1: plogit1 Link Function
+## Model 1: plogit1 Link Function
 The first model uses the `plogit1` parametric link function for the mean and includes interactions between predictors:
   
 ```{r model-plogit1}
@@ -100,13 +103,13 @@ summary(simplex_par1)
 - The dispersion structure is modeled as a function of EconomicFreedom, HealthSpending, and Democracy
 - The lambda parameter in plogit1 is estimated from the data
 
-# Half-Normal Plot with simulated envelopes for Model 1
+### Half-Normal Plot with simulated envelopes for Model 1
 
 ```{r diagnostic-par1, fig.cap="Half-normal plot with simulated envelope for Model 1"}
 hnp.simplexreg(simplex_par1, type = "sweighted2", seed = 2008)
 ```
 
-### Model 2: plogit2 Link Function
+## Model 2: plogit2 Link Function
 
 The second parametric model uses the `plogit2` link function with a different dispersion structure:
   
@@ -123,7 +126,7 @@ simplex_par2 <- simplexreg(
 summary(simplex_par2)
 ```
 
-# Half-Normal Plot with simulated envelopes for Model 2
+### Half-Normal Plot with simulated envelopes for Model 2
 
 ```{r diagnostic-par2, fig.cap="Half-normal plot with simulated envelope for Model 2"}
 hnp.simplexreg(simplex_par2, type = "sweighted2", seed = 2008)
@@ -144,12 +147,12 @@ penalized_ic(simplex_par1)
 penalized_ic(simplex_par2)
 ```
 
-## Fixed Link Function Models
+# Fixed Link Function Models
 
 For comparison, we also fitted simplex regression models using traditional fixed mean link functions (logit, probit, log-log, complementary log-log, and cauchit).  
 These models help assess whether the flexibility provided by parametric links leads to better fit.
 
-### Model with loglog Link
+## Model with loglog Link
 
 ```{r model-loglog}
 simplex1 <- simplexreg(
@@ -164,7 +167,7 @@ simplex1 <- simplexreg(
 summary(simplex1)
 ```
 
-### Model with logit Link
+## Model with logit Link
 
 ```{r model-logit}
 simplex2 <- simplexreg(
@@ -179,7 +182,7 @@ simplex2 <- simplexreg(
 summary(simplex2)
 ```
 
-### Model with probit Link
+## Model with probit Link
 
 ```{r model-probit}
 simplex3 <- simplexreg(
@@ -194,7 +197,7 @@ simplex3 <- simplexreg(
 summary(simplex3)
 ```
 
-### Model with cloglog Link
+## Model with cloglog Link
 
 ```{r model-cloglog}
 simplex4 <- simplexreg(
@@ -209,7 +212,7 @@ simplex4 <- simplexreg(
 summary(simplex4)
 ```
 
-### Model with cauchit Link
+## Model with cauchit Link
 
 ```{r model-cauchit}
 simplex5 <- simplexreg(
@@ -252,9 +255,9 @@ scoretest.simplexreg(simplex2, link = "plogit1")
 
 The null hypothesis H₀: λ = 1 (which corresponds to the logit link) was rejected at the 1% level (p = 0.0011), confirming the relevance of the parametric specification.
 
-## Model Diagnostics
+# Model Diagnostics
 
-# Residual Plots
+## Residual Plots
 
 ```{r residual-plots, fig.cap="Diagnostic plots for the selected model"}
 # Residuals vs observation indices
@@ -285,7 +288,7 @@ plot(simplex_par1, which = 7, type = "quantile")
 tseries::jarque.bera.test(residuals(simplex_par1, type = "quantile"))
 ```
 
-### RESET Test for Specification
+## RESET Test for Specification
 
 The RESET test checks for functional form misspecification:
   
@@ -347,7 +350,7 @@ if(length(influential_resp) > 0) {
 
 Number of influential observations (response): `r sum(influences_resp > 2*mean(influences_resp))`
 
-## Visualizing Link Functions
+# Visualizing Link Functions
 
 ### Comparing Link Functions: Inverse Links
 
@@ -383,7 +386,7 @@ legend("bottomright",
        bty = "n")
 ```
 
-## Conclusion
+# Conclusion
 
 This analysis demonstrates several key features of the `SimplexRegression` package:
   
@@ -394,7 +397,7 @@ This analysis demonstrates several key features of the `SimplexRegression` packa
 
 The parametric approach offers advantages over fixed link functions when the optimal transformation is unknown a priori, as demonstrated by the superior performance of `simplex_par1` in this application.
 
-## References
+# References
 
 - Add relevant references here
 - Package documentation
