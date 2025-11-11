@@ -1,8 +1,8 @@
 ---
-title: "ImpunityAnalysis"
+title: "Impunity Analysis - Simplex Regression"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{ImpunityAnalysis}
+  %\VignetteIndexEntry{Impunity Analysis - Simplex Regression}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -30,7 +30,15 @@ n <- nrow(dados)
 
 ### Data Overview
 
-The dataset contains `r n` observations across `r ncol(dados)` variables:
+The dataset includes 119 observations and nine explanatory variables reflecting economic, institutional, and social aspects of each country:
+- Economic Freedom Index (2022)
+- Gini Index (2015)
+- GDP per capita (2018)
+- Human Development Index (2019)
+- Health Expenditure as % of GDP (2020)
+- Quality of Democracy Index (2020)
+- Press Freedom Index (2023)
+- Dummy variable for Nordic countries
 
 ```{r data-structure}
 str(dados)
@@ -44,7 +52,10 @@ head(dados)
 
 ### Descriptive Statistics for the Response Variable
 
-The response variable `Impunity` is bounded in the interval (0,1). Let's examine its distribution:
+The response variable `Impunity` is bounded in the interval (0,1) and consists of Impunity Index scores for 119 countries in 2023, as in Cribari-Neto and Santos (2024).  
+The Impunity Index is defined as one minus the Rule of Law Index published by the World Justice Project (WJP), meaning that higher values correspond to weaker rule of law and higher levels of impunity.  
+According to the WJP, the Rule of Law Index is built upon eight dimensions: constraints on government powers, absence of corruption, open government, protection of fundamental rights, order and security, regulatory enforcement, civil justice, and criminal justice.
+Let's examine its distribution:
 
 ```{r descriptive-stats}
 # Summary statistics
@@ -64,6 +75,9 @@ cat("Kurtosis: ", round(moments::kurtosis(dados$Impunity), 4), "\n")
 # Parametric Link Function Models
 
 One of the key features of simplex regression is the ability to use parametric link functions that adapt to the data structure. We begin by fitting models with `plogit1` and `plogit2` link functions.
+
+We estimated simplex regression models with parametric mean link functions `plogit1` and `plogit2`, including all eight covariates, selected powers, and interaction terms.  
+Predictor selection was guided by half-normal residual plots with simulated envelopes, pseudo-R², and penalized information criteria (AIC, SIC, HQIC).
 
 ### Model 1: plogit1 Link Function
 The first model uses the `plogit1` parametric link function for the mean and includes interactions between predictors:
@@ -132,7 +146,8 @@ penalized_ic(simplex_par2)
 
 ## Fixed Link Function Models
 
-For comparison, we fit models with traditional fixed link functions.
+For comparison, we also fitted simplex regression models using traditional fixed mean link functions (logit, probit, log-log, complementary log-log, and cauchit).  
+These models help assess whether the flexibility provided by parametric links leads to better fit.
 
 ### Model with loglog Link
 
@@ -211,7 +226,8 @@ summary(simplex5)
 
 ## Model Selection: All Models
 
-We compare all models using the Scout Score criterion:
+The modified Scout Score and information criteria favored the `plogit1` specification.  
+We now compare it to models using fixed links under the original SS criterion.
   
 ```{r model-selection-all}
 ss.simplexreg(simplex_par1, simplex1, simplex2, simplex3, simplex4, simplex5, 
@@ -233,6 +249,8 @@ We can test whether the estimated lambda parameter is significantly different fr
 ```{r test-lambda}
 scoretest.simplexreg(simplex2, link = "plogit1")
 ```
+
+The null hypothesis H₀: λ = 1 (which corresponds to the logit link) was rejected at the 1% level (p = 0.0011), confirming the relevance of the parametric specification.
 
 ## Model Diagnostics
 
