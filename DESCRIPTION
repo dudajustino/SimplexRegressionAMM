@@ -4,18 +4,20 @@ Title: Simplex Regression Models with Parametric or Fixed Mean Link Functions
 Version: 0.1.0
 Authors@R: 
     c(
-      person("Maria Eduarda C.", "Justino", role = c("aut", "cre"),
+      person("Maria Eduarda da Cruz.", "Justino", role = c("aut", "cre"),
              email = "eueduardacruz@gmail.com"),
       person("Francisco", "Cribari-Neto", role = "ctb",
              email = "francisco.cribari@ufpe.br")
     )
 Description: Provides functions for fitting and analyzing simplex regression models 
-    with parametric or fixed mean link functions. The package includes implementations of the 
-    simplex probability density and variance functions, several fixed and parametric 
-    link functions, residual analysis and diagnostic plots, hypothesis testing procedures, 
-    and influence measures such as Cook's distance and leverage (hat values). 
-    It also includes the SCOUT Score (SS) criterion for model selection, 
-    allowing comprehensive inference and diagnostics for simplex regression models.
+    with either fixed or parametric mean link functions. The package implements the simplex 
+    probability density function, cumulative distribution function, quantile function, 
+    random number generation, and variance evaluation. It also offers several fixed and 
+    parametric link functions for the mean submodel, tools for residual analysis and 
+    diagnostic plotting, hypothesis testing procedures, and influence measures such as
+    Cook’s distance and leverage (hat values). In addition, the package includes the 
+    Scout Score (SS) criterion for model selection, enabling comprehensive inference 
+    and diagnostic analysis within the simplex regression framework.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -31,5 +33,7 @@ Depends:
     R (>= 3.5)
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    moments,
+    tseries
 VignetteBuilder: knitr
