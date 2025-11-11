@@ -1,0 +1,55 @@
+################################################################################
+#                SIMPLEX REGRESSION - DEVIANCE FUNCTION                        #
+# Author: Maria Eduarda da Cruz Justino and Francisco Cribari-Neto             #
+# Date: 2025-11-08                                                             #
+# Description: Computes the unit deviance for the simplex distribution         #
+################################################################################
+
+# ==============================================================================
+# SIMPLEX DEVIANCE FUNCTION
+# ==============================================================================
+
+#' @title Simplex Unit Deviance Function
+#' @description Computes the unit deviance (scaled deviance component) for the
+#' simplex distribution.
+#'
+#' @param y Numeric vector of observed response values (\eqn{0 < y < 1})
+#' @param mu Numeric vector of fitted mean values (\eqn{0 < \mu < 1})
+#'
+#' @details
+#' The unit deviance for the simplex distribution is defined as:
+#' \deqn{d(y, \mu) = \frac{(y - \mu)^2}{y(1-y)[\mu(1-\mu)]^2}}
+#'
+#' This quantity is used in the computation of:
+#' \itemize{
+#'   \item Total deviance: \eqn{D = \sum_{i=1}^n d(y_i, \mu_i) / \sigma^2}
+#'   \item Deviance residuals
+#'   \item Model diagnostics
+#' }
+#'
+#' The unit deviance is always non-negative and equals zero when \eqn{y = \mu}.
+#'
+#' @return Numeric vector of unit deviance values
+#'
+#' @examples
+#' # Single value
+#' deviance_simplexreg(y = 0.6, mu = 0.5)
+#'
+#' # Vector of values
+#' y_vec <- c(0.2, 0.5, 0.8)
+#' mu_vec <- c(0.3, 0.5, 0.7)
+#' deviance_simplexreg(y = y_vec, mu = mu_vec)
+#'
+#' # Perfect fit returns zero deviance
+#' deviance_simplexreg(y = 0.5, mu = 0.5)
+#'
+#' @export
+deviance_simplexreg <- function(y, mu){
+  # Compute unit deviance
+  diff <- y - mu
+  yoneminy <- y * (1 - y)
+  muonemu <- mu * (1 - mu)
+  deviance <- (diff / muonemu)^2 / yoneminy
+
+  return(deviance)
+}

@@ -1,13 +1,31 @@
 Package: SimplexRegression
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Simplex Regression Models with Parametric or Fixed Mean Link Functions
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Authors@R: 
+    c(
+      person("Maria Eduarda C.", "Justino", role = c("aut", "cre"),
+             email = "eueduardacruz@gmail.com"),
+      person("Francisco", "Cribari-Neto", role = "ctb",
+             email = "francisco.cribari@ufpe.br")
+    )
+Description: Provides functions for fitting and analyzing simplex regression models 
+    with parametric or fixed mean link functions. The package includes implementations of the 
+    simplex probability density and variance functions, several fixed and parametric 
+    link functions, residual analysis and diagnostic plots, hypothesis testing procedures, 
+    and influence measures such as Cook's distance and leverage (hat values). 
+    It also includes the SCOUT Score (SS) criterion for model selection, 
+    allowing comprehensive inference and diagnostics for simplex regression models.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/dudajustino/SimplexRegression
 BugReports: https://github.com/dudajustino/SimplexRegression/issues
+RoxygenNote: 7.3.3
+Imports: 
+    expint,
+    gamlss,
+    graphics,
+    stats
+Depends: 
+    R (>= 3.5)
