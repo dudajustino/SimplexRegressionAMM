@@ -26,8 +26,8 @@ The impunity dataset contains information about various socioeconomic and politi
 ```{r setup}
 library(SimplexRegression)
 data("impunity_dataset")
-dados <- impunity_dataset
-n <- nrow(dados)
+data_imp <- impunity_dataset
+n <- nrow(data_imp)
 ```
 
 ### Data Overview
@@ -43,13 +43,13 @@ The dataset includes 119 observations and nine explanatory variables reflecting 
 - Dummy variable for Nordic countries
 
 ```{r data-structure}
-str(dados)
+str(data_imp)
 ```
 
 A preview of the first few observations:
 
 ```{r data-head}
-head(dados)
+head(data_imp)
 ```
 
 ### Descriptive Statistics for the Response Variable
@@ -64,18 +64,18 @@ Let's examine the distribution of the response variable:
 
 ```{r descriptive-stats}
 # Summary statistics
-summary(dados$Impunity)
+summary(data_imp$Impunity)
 
 # Additional descriptive measures
 cat("\nDescriptive Statistics for Impunity:\n")
-cat("Mean:     ", round(mean(dados$Impunity), 4), "\n")
-cat("Median:   ", round(median(dados$Impunity), 4), "\n")
-cat("Std Dev:  ", round(sd(dados$Impunity), 4), "\n")
-cat("Variance: ", round(var(dados$Impunity), 4), "\n")
-cat("Min:      ", round(min(dados$Impunity), 4), "\n")
-cat("Max:      ", round(max(dados$Impunity), 4), "\n")
-cat("Skewness: ", round(moments::skewness(dados$Impunity), 4), "\n")
-cat("Kurtosis: ", round(moments::kurtosis(dados$Impunity), 4), "\n")
+cat("Mean:     ", round(mean(data_imp$Impunity), 4), "\n")
+cat("Median:   ", round(median(data_imp$Impunity), 4), "\n")
+cat("Std Dev:  ", round(sd(data_imp$Impunity), 4), "\n")
+cat("Variance: ", round(var(data_imp$Impunity), 4), "\n")
+cat("Min:      ", round(min(data_imp$Impunity), 4), "\n")
+cat("Max:      ", round(max(data_imp$Impunity), 4), "\n")
+cat("Skewness: ", round(moments::skewness(data_imp$Impunity), 4), "\n")
+cat("Kurtosis: ", round(moments::kurtosis(data_imp$Impunity), 4), "\n")
 ```
 
 # Models with Parametric Mean Link Functions
@@ -95,7 +95,7 @@ simplex_par1 <- simplexreg(
   Impunity ~ EconomicFreedom + I(GDP^1.15) + I(HDI*HealthSpending) + 
     I(Democracy*Press) + dnordic |
     EconomicFreedom + HealthSpending + Democracy,
-  data = dados,
+  data = data_imp,
   link.mu = "plogit1", 
   link.sigma2 = "log"
 )
@@ -125,7 +125,7 @@ simplex_par2 <- simplexreg(
   Impunity ~ EconomicFreedom + I(GDP^1.15) + I(HDI*HealthSpending) + 
     I(Democracy*Press) + dnordic |
     I(Democracy*Press) + I(HealthSpending^1.6),
-  data = dados,
+  data = data_imp,
   link.mu = "plogit2", 
   link.sigma2 = "log"
 )
@@ -167,7 +167,7 @@ simplex1 <- simplexreg(
   Impunity ~ EconomicFreedom + I(GDP^1.15) + I(HDI*HealthSpending) + 
     I(Democracy*Press) + dnordic |
     EconomicFreedom + HealthSpending + Democracy, 
-  data = dados,  
+  data = data_imp,  
   link.mu = "loglog", 
   link.sigma2 = "log"
 )
@@ -182,7 +182,7 @@ simplex2 <- simplexreg(
   Impunity ~ EconomicFreedom + I(GDP^1.15) + I(HDI*HealthSpending) + 
     I(Democracy*Press) + dnordic |
     EconomicFreedom + HealthSpending + Democracy, 
-  data = dados,  
+  data = data_imp,  
   link.mu = "logit", 
   link.sigma2 = "log"
 )
@@ -197,7 +197,7 @@ simplex3 <- simplexreg(
   Impunity ~ EconomicFreedom + I(GDP^1.15) + I(HDI*HealthSpending) + 
     I(Democracy*Press) + dnordic |
     EconomicFreedom + HealthSpending + Democracy,  
-  data = dados, 
+  data = data_imp, 
   link.mu = "probit", 
   link.sigma2 = "log"
 )
@@ -212,7 +212,7 @@ simplex4 <- simplexreg(
   Impunity ~ EconomicFreedom + I(GDP^1.15) + I(HDI*HealthSpending) + 
     I(Democracy*Press) + dnordic |
     HealthSpending + I(Democracy^0.4), 
-  data = dados, 
+  data = data_imp, 
   link.mu = "cloglog", 
   link.sigma2 = "log"
 )
@@ -227,7 +227,7 @@ simplex5 <- simplexreg(
   Impunity ~ EconomicFreedom + I(GDP^1.15) + I(HDI*HealthSpending) + 
     I(Democracy*Press) + dnordic |
     HealthSpending + I(Democracy^0.4), 
-  data = dados,  
+  data = data_imp,  
   link.mu = "cauchit", 
   link.sigma2 = "log"
 )
