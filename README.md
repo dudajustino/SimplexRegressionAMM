@@ -73,6 +73,7 @@ Traditional approaches use **fixed mean link functions** (logit, probit, log-log
 
 📂 Repository Structure
 
+```
 .
 ├── R/                  # Source code for all R functions.
 ├── data/               # Processed data included in the package (.rda).
@@ -82,6 +83,7 @@ Traditional approaches use **fixed mean link functions** (logit, probit, log-log
 ├── NAMESPACE           # Manages the package's namespace.
 ├── LICENSE             # MIT License file.
 └── README.md           # This file.
+```
 
 --- 
 
