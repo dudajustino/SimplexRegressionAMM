@@ -61,7 +61,7 @@ Traditional approaches use **fixed mean link functions** (logit, probit, log-log
 
 ### Model Selection Tools
 - **Scout Score (SS)** criterion with optional penalty for parametric links
-- **Penalized information criteria**: AIC^(λ), BIC^(λ), HQIC^(λ)
+- **Penalized information criteria**: AIC<sup>(λ)</sup>, BIC<sup>(λ)</sup>, HQIC<sup>(λ)</sup>
 - **Score tests**: Test H₀: λ = 1 (logit link) vs. H₁: λ ≠ 1
 
 ### Global and Local Influence Analysis
