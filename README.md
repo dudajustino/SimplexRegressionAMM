@@ -1,10 +1,34 @@
 
-# SimplexRegression
+# SimplexRegression: A Package for Simplex Regression with parametric and fixed mean link function
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of SimplexRegression is to ...
+This repository contains the R package and associated data for the scientific article:
+
+“Simplex regression with a flexible logit link: inference and application to cross-country impunity data” by Justino, M.E.C., Cribari-Neto, F.
+
+## 📑 Table of Contents
+
+- [Overview](#-overview)
+- [Key Features](#-key-features)
+- [Installation](#-installation)
+- [Quick Start](#-quick-start)
+- [Usage Examples](#-usage-examples)
+  - [Basic Model](#basic-model)
+  - [Parametric Mean Link Functions](#parametric-mean-link-functions)
+  - [Model Diagnostics](#model-diagnostics)
+  - [Model Selection](#model-selection)
+- [Vignettes](#-vignettes)
+- [Real Data Application](#-real-data-application)
+- [Functions Reference](#-functions-reference)
+- [Contributing](#-contributing)
+- [References](#-references)
+- [License](#-license)
+- [Citation](#-citation)
+- [Contact](#-contact)
+
+---
 
 ## Installation
 
