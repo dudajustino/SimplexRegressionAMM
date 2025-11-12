@@ -6,8 +6,8 @@
 \usage{
 envelope.simplexreg(
   model,
-  type = c("sweighted2", "quantile", "pearson", "pearson P", "deviance", "deviance P",
-    "sweighted1", "variance", "variance P", "combined", "anscombe", "williams",
+  type = c("weighted", "quantile", "pearson", "pearson P", "deviance", "deviance P",
+    "standardized", "variance", "variance P", "biasvariance", "anscombe", "williams",
     "response", "score", "dualscore"),
   nsim = 100,
   seed = 2025,
@@ -19,7 +19,7 @@ envelope.simplexreg(
 \item{model}{An object of class \code{"simplexregression"}}
 
 \item{type}{Character string specifying residual type
-(see \code{residuals.simplexregression}). Default is \code{"sweighted2"}.}
+(see \code{residuals.simplexregression}). Default is \code{"weighted"}.}
 
 \item{nsim}{Number of simulations (default: 100)}
 

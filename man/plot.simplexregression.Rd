@@ -7,9 +7,10 @@
 \method{plot}{simplexregression}(
   x,
   which = 1:7,
-  type = c("quantile", "pearson", "pearson P", "deviance", "deviance P", "sweighted1",
-    "sweighted2", "variance", "variance P", "combined", "anscombe", "williams",
+  type = c("quantile", "pearson", "pearson P", "deviance", "deviance P", "standardized",
+    "weighted", "variance", "variance P", "biasvariance", "anscombe", "williams",
     "response", "score", "dualscore"),
+  ask = prod(par("mfcol")) < length(which) && dev.interactive(),
   ...
 )
 }
@@ -20,6 +21,9 @@
 
 \item{type}{Character string specifying residual type
 (see \code{residuals.simplexreg}). Default is \code{"quantile"}.}
+
+\item{ask}{Logical. If \code{TRUE}, the user is asked before each plot.
+Default is \code{TRUE} when multiple plots are requested.}
 
 \item{...}{Additional graphical parameters}
 }

@@ -6,8 +6,8 @@
 \usage{
 \method{residuals}{simplexregression}(
   object,
-  type = c("quantile", "pearson", "pearson P", "deviance", "deviance P", "sweighted1",
-    "sweighted2", "variance", "variance P", "combined", "anscombe", "williams",
+  type = c("quantile", "pearson", "pearson P", "deviance", "deviance P", "standardized",
+    "weighted", "variance", "variance P", "biasvariance", "anscombe", "williams",
     "response", "score", "dualscore"),
   ...
 )
@@ -22,11 +22,11 @@
   \item \code{"pearson P"}: Standardized Pearson residuals
   \item \code{"deviance"}: Deviance residuals
   \item \code{"deviance P"}: Standardized deviance residuals
-  \item \code{"sweighted1"}: Standardized residuals
-  \item \code{"sweighted2"}: Weighted residuals
+  \item \code{"standardized"}: Standardized residuals
+  \item \code{"weighted"}: Weighted residuals
   \item \code{"variance"}: Variance residuals
   \item \code{"variance P"}: Standardized variance residuals
-  \item \code{"combined"}: Bias-variance residuals
+  \item \code{"biasvariance"}: Bias-variance residuals
   \item \code{"anscombe"}: Anscombe residuals
   \item \code{"williams"}: Williams residuals
   \item \code{"response"}: Response (ordinary) residuals
