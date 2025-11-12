@@ -37,7 +37,7 @@ An object of class \code{"simplexregression"} containing:
   \item \code{vcov}: Variance-covariance matrix
   \item \code{loglik}: Log-likelihood value
   \item \code{AIC}, \code{BIC}, \code{HQ}: Information criteria
-  \item \code{R2_RV}, \code{R2_FC}: Pseudo R-squared measures
+  \item \code{R2_N}, \code{R2_FC}: Pseudo R-squared measures
 
 }
 }
@@ -50,14 +50,13 @@ The model is specified using a two-part formula:
 \itemize{
   \item Mean submodel: \eqn{g(\mu_i, \lambda) = x_i'\beta}
   or \eqn{g(\mu_i) = x_i'\beta}
-  \item Dispersion submodel: \eqn{h(\sigma^2_i) = z_i'\delta}
+  \item Dispersion submodel: \eqn{h(\sigma^2_i) = z_i'\gamma}
 }
 
 The parametric mean link functions include a parameter \eqn{\lambda} that
 is estimated along with other model parameters.
 }
 \examples{
-\dontrun{
 # Simulate data
 n <- 100
 x1 <- runif(n, 0, 1)
@@ -66,12 +65,19 @@ mu <- parametric_mean_link_inv(0.8 - 1.2*x1 - 1.5*x2 , 0.25, "plogit2")
 sigma2 <- 0.5
 summary(mu)
 y <- rsimplex_opt(n, mu, sigma2)
-data <- data.frame(y = y, x = x)
+data <- data.frame(y = y, x = cbind(x1, x2))
 
 # Fit model
 fit <- simplexreg(y ~ x1 + x2 | 1, data = data,
                      link.mu = "plogit2", link.sigma2 = "identity")
 summary(fit)
-}
 
+}
+\references{
+Justino, M. E. C. and Cribari-Neto, F. (2025).
+Simplex regression with a flexible logit link: Inference and application
+to cross-country impunity data.
+\emph{Working Paper}, Departamento de Estatística,
+Universidade Federal de Pernambuco.
+\url{https://github.com/dudajustino/SimplexRegressionAMM}
 }
