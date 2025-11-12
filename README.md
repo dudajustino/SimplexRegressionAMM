@@ -1,5 +1,5 @@
 
-# SimplexRegression: A Package for Simplex Regression with parametric and fixed mean link function
+# SimplexRegressionAMM: A Package for Simplex Regression with parametric and fixed mean link function
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -89,7 +89,7 @@ Traditional approaches use **fixed mean link functions** (logit, probit, log-log
 
 ## 🎯 Code of Conduct
 
-Please note that the SimplexRegression project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
+Please note that the SimplexRegressionAMM project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
 
 ---
 
@@ -132,7 +132,7 @@ Platform: x86_64-w64-mingw32 (64-bit)
 ## 🚀 Getting Started & Examples
 
 ```r
-library(SimplexRegression)
+library(SimplexRegressionAMM)
 
 # Load the dataset
 data("impunity_dataset")
@@ -177,10 +177,10 @@ Detailed tutorials and applications:
 
 ```r
 # List all vignettes
-browseVignettes("SimplexRegression")
+browseVignettes("SimplexRegressionAMM")
 
 # View specific vignette
-vignette("impunity-analysis", package = "SimplexRegression")
+vignette("impunity-analysis", package = "SimplexRegressionAMM")
 ```
 
 ### Available vignettes:
