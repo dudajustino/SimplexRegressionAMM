@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-This vignette demonstrates the use of the `SimplexRegression` package to model impunity data across countries. 
+This vignette demonstrates the use of the `SimplexRegressionAMM` package to model impunity data across countries. 
 We explore the advantages of parametric mean link functions (plogit1 and plogit2) compared to traditional fixed mean link functions, 
 and provide comprehensive model diagnostics.
 
@@ -24,7 +24,7 @@ The impunity dataset contains information about various socioeconomic and politi
 
 ## Loading the Data
 ```{r setup}
-library(SimplexRegression)
+library(SimplexRegressionAMM)
 data("impunity_dataset")
 data_imp <- impunity_dataset
 n <- nrow(data_imp)
@@ -393,7 +393,7 @@ legend("bottomright",
 
 # Conclusion
 
-This analysis demonstrates several key features of the `SimplexRegression` package:
+This analysis demonstrates several key features of the `SimplexRegressionAMM` package:
   
 1. **Parametric mean link functions** (plogit1, plogit2) provide flexibility by estimating the link parameter from the data
 2. **Model selection** using Scout Score effectively identifies the best-fitting model
