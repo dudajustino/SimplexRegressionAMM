@@ -113,7 +113,7 @@ summary(simplex_par1)
 We use weighted residual (Espinheira and Silva, 2020) for Half-Normal plot with simulated envelopes.
 
 ```{r diagnostic-par1, fig.cap="Half-normal plot with simulated envelope for Model 1"}
-hnp.simplexreg(simplex_par1, type = "sweighted2", seed = 2008)
+hnp.simplexreg(simplex_par1, type = "weighted", seed = 2008)
 ```
 
 ## Model 2: plogit2 Parametric Mean Link Function
@@ -136,7 +136,7 @@ summary(simplex_par2)
 ### Half-Normal Plot with simulated envelopes for Model 2
 
 ```{r diagnostic-par2, fig.cap="Half-normal plot with simulated envelope for Model 2"}
-hnp.simplexreg(simplex_par2, type = "sweighted2", seed = 2008)
+hnp.simplexreg(simplex_par2, type = "weighted", seed = 2008)
 ```
 
 ### Model Selection: Parametric Mean Link Functions
