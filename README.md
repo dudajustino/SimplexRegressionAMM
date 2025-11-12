@@ -210,15 +210,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 If you use this package in your research, please cite:
 
 ```bibtex
-<<<<<<< HEAD
 @article{Justino+Cribari_2025,
-  title = {Simplex Regression with a Flexible Logit Link: Inference and Application to Cross-Country Impunity Data},
-  author = {Maria Eduarda da Cruz Justino and Francisco Cribari-Neto},
-=======
-@Article{Justino+Cribari_2025,
   title = {Simplex regression with a flexible logit link: Inference and application to cross-country impunity data},
   author = {Maria E. C. Justino and Francisco Cribari-Neto},
->>>>>>> f41e0bec68c086d8869d4f20af4a8a02e42e1b42
   year = {2025},
   url = {https://github.com/dudajustino/SimplexRegressionAMM},
 }
