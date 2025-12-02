@@ -180,7 +180,7 @@ Detailed tutorials and applications:
 browseVignettes("SimplexRegressionAMM")
 
 # View specific vignette
-vignette("impunity-analysis", package = "SimplexRegressionAMM")
+vignette("ImpunityAnalysis", package = "SimplexRegressionAMM")
 ```
 
 ### Available vignettes:
