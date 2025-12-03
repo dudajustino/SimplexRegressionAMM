@@ -69,12 +69,7 @@ summary(data_imp$Impunity)
 
 # Additional descriptive measures
 cat("\nDescriptive Statistics for Impunity:\n")
-cat("Mean:     ", round(mean(data_imp$Impunity), 4), "\n")
-cat("Median:   ", round(median(data_imp$Impunity), 4), "\n")
 cat("Std Dev:  ", round(sd(data_imp$Impunity), 4), "\n")
-cat("Variance: ", round(var(data_imp$Impunity), 4), "\n")
-cat("Min:      ", round(min(data_imp$Impunity), 4), "\n")
-cat("Max:      ", round(max(data_imp$Impunity), 4), "\n")
 cat("Skewness: ", round(moments::skewness(data_imp$Impunity), 4), "\n")
 cat("Kurtosis: ", round(moments::kurtosis(data_imp$Impunity), 4), "\n")
 ```
