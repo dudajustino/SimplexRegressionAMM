@@ -137,13 +137,13 @@ hnp.simplexreg(simplex_par2, type = "weighted", seed = 2008)
 
 ### Model Selection: Parametric Mean Link Functions
 
-We use the penalized Scout Score (SS) criterion to select between models with parametric mean link functions:
+We use the penalized Scout Score (SS) criterion with `kappa = 0.1` to select between models with parametric mean link functions:
   
 ```{r scout-score}
 ss.simplexreg(simplex_par1, simplex_par2, kappa = 0.1)
 ```
 
-We can also examine penalized information criteria:
+We can also examine penalized information criteria with `kappa = 0.1`:
   
 ```{r penalized-ic}
 penalized_ic(simplex_par1)
