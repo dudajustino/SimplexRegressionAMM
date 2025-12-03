@@ -33,6 +33,7 @@ n <- nrow(data_imp)
 ### Data Overview
 
 The dataset includes 119 observations and nine explanatory variables reflecting economic, institutional, and social aspects of each country:
+
 - Economic Freedom Index (2022)
 - Gini Index (2015)
 - GDP per capita (2018)
