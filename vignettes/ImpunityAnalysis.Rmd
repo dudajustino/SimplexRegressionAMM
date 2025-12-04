@@ -33,7 +33,7 @@ n <- nrow(data_imp)
 
 ### Data Overview
 
-The dataset includes 119 observations and nine explanatory variables reflecting economic, institutional, and social aspects of each country:
+The dataset includes 119 observations and eight explanatory variables reflecting economic, institutional, and social aspects of each country:
 
 - Economic Freedom Index (2022);
 - Gini Index (2015);
@@ -56,7 +56,7 @@ head(data_imp)
 
 ### Descriptive Statistics for the Response Variable
 
-The response variable `Impunity` is bounded in the open interval (0,1) and consists of Impunity Index scores for 119 countries in 2023, as described in Santos and Cribari-Neto (2024).  
+The response variable `Impunity` is bounded in the open interval (0,1) and consists of Impunity Index scores for 119 countries in 2023, as described in Cribari-Neto and Santos (2024).  
 
 The Impunity Index is defined as one minus the Rule of Law Index published by the World Justice Project (WJP). Higher values correspond to weaker rule of law and higher levels of impunity.  
 
@@ -79,7 +79,7 @@ cat("Kurtosis: ", round(moments::kurtosis(data_imp$Impunity), 4), "\n")
 
 One of the main features of simplex regression with a parametric mean link function is its ability to employ link functions that adapt to the structure of the data. These functions incorporate an additional parameter, \(\lambda\), which is estimated from the data, providing greater flexibility compared to fixed mean link functions.
 
-We estimated simplex regression models with parametric mean link functions `plogit1` and `plogit2`, incorporating all eight covariates, selected powers of regressors, and interaction terms.
+We estimate simplex regression models with parametric mean link functions `plogit1` and `plogit2`, incorporating all eight covariates, selected powers of regressors, and interaction terms.
 
 Predictor selection was guided by half-normal residual plots with simulated envelopes, pseudo-\(R^2\) Nagelkerke, and information criteria (AIC, SIC, HQIC).
 
