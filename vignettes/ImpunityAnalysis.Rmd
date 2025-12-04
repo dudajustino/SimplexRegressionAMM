@@ -368,8 +368,8 @@ sigma2_ll <- simplex1$sigma2.fv
 
 plot_density <- function(i, zmin, zmax, titulo = "") {
   z.range <- seq(from = zmin, to = zmax, length = 200)
-  d_par1 <- dsimplex(z.range, mu_par[i], sigma2_par[i])
-  d_ll   <- dsimplex(z.range, mu_ll[i],  sigma2_ll[i])
+  d_par1 <- dsimplex_opt(z.range, mu_par[i], sigma2_par[i])
+  d_ll   <- dsimplex_opt(z.range, mu_ll[i],  sigma2_ll[i])
   
   matplot(z.range, cbind(d_par1, d_ll), type = "l",
     lty = c(1, 2), col = c("black", "gray60"),
