@@ -38,7 +38,7 @@ hypothesis. The advantage of the score test is that it only requires fitting
 the model under the null hypothesis.
 
 The test statistic is:
-\deqn{S_R = \boldsymbol{U}_\lambda(\boldsymbol{\theta})^\top \boldsymbol{K}^{\lambda \lambda}
+\deqn{S = \boldsymbol{U}_\lambda(\boldsymbol{\theta})^\top \boldsymbol{K}^{\lambda \lambda}
 \boldsymbol{U}_\lambda(\boldsymbol{\theta})}
 
 where \eqn{\boldsymbol{U}_\lambda} is the score function with respect to \eqn{\lambda}
