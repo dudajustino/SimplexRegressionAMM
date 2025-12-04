@@ -20,6 +20,9 @@
 #' (see \code{residuals.simplexreg}). Default is \code{"quantile"}.
 #' @param ask Logical. If \code{TRUE}, the user is asked before each plot.
 #' Default is \code{TRUE} when multiple plots are requested.
+#' @param reset.par Logical; if \code{TRUE}, resets graphical parameters before plotting.
+#' Set to \code{FALSE} to preserve user-defined \code{par()} settings such as \code{mfrow}.
+#' Default is \code{TRUE}.
 #' @param ... Additional graphical parameters
 #'
 #' @details
@@ -46,7 +49,7 @@ plot.simplexregression <- function(x, which = 1:7,
                                         "biasvariance", "anscombe", "williams",
                                         "response", "score", "dualscore"),
                                ask = prod(par("mfcol")) < length(which) && dev.interactive(),
-                               ...) {
+                                   reset.par = TRUE, ...) {
   if(!is.numeric(which) || any(which < 1) || any(which > 7))
     stop("`which' must be in 1:7")
 
@@ -65,7 +68,9 @@ plot.simplexregression <- function(x, which = 1:7,
     on.exit(par(op))
   }
 
-  par(mar = c(3, 3, 2, 3), oma = c(0.5, 0.5, 0.5, 0.5), mgp = c(2, 0.6, 0))
+  if(reset.par) {
+    par(mar = c(3, 3, 2, 3), oma = c(0.5, 0.5, 0.5, 0.5), mgp = c(2, 0.6, 0))
+  }
 
   # 1. Residuals vs indices
   if(show[1]) {
